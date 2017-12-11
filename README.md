@@ -1,7 +1,7 @@
 # noJS_gallery
 
 noJS_gallery is a responsive gallery that uses no javascript.
-It leverages CSS and HTML only.
+It leverages CSS and HTML only. TODO: use loops to generate the thumbnails.
 It is an experiment on how far we can go without javascript.
 (I love javascript just like anyone else but hey, it's a free world to do what you want, right?)
   - This was originally set up as one of the entries for YP's Hackathon 2017
