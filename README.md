@@ -8,3 +8,6 @@ It is an experiment on how far we can go without javascript.
   - A lot of design aspect is not optimal due to time limitations.
   - Most of all this was done for fun and flexing code muscles where it doesn't get used on a daily basis
   - A real-world use might be for AMP 
+
+## To see in action:
+http://katomonster-no-js-gallery.surge.sh/
