@@ -170,9 +170,9 @@ h1 {
     cursor: pointer;
 }
 
-.thumb-input:checked ~ .figure:after {
+/*.thumb-input:checked ~ .figure:after {
     content: '\00d7';
-}
+}*/
 
 .thumb-input:checked ~ .overlay {
     display: block;
