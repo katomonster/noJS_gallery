@@ -15,6 +15,41 @@ html {
   outline: none;
 }
 
+.btn-prev,
+.btn-next {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    font-size: 20px;
+    color: #fff;
+}
+.btn-prev:after,
+.btn-next:after {
+    display: block;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,.5);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+}
+.btn-prev:after {
+    content:'<';
+}
+.btn-next:after {
+    content:'>';
+}
+.btn-prev {
+    left: -30px;
+}
+.btn-next {
+    right: -30px;
+}
+
 .figure {
     max-height: 0;
     position: fixed;
@@ -22,6 +57,8 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: none;
+    background: transparent;
 }
 
 h1 {
@@ -154,15 +191,16 @@ h1 {
     opacity: 0;
     transform: translateX(-100%);
 }
-.thumb-input:checked ~ .figure div:nth-child(1) {
+.thumb-input:checked ~ .figure div:nth-of-type(1) {
     opacity: 1;
+    top: 0;
     background-position: 0 0;
     transform: translateX(0);
     transition: transform 400ms, opacity 400ms;
     transition-delay: 0;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(2) {
+.thumb-input:checked ~ .figure div:nth-of-type(2) {
     opacity: 1;
     top: 10%;
     transform: translateX(0);
@@ -171,7 +209,7 @@ h1 {
     transition-delay: 100ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(3) {
+.thumb-input:checked ~ .figure div:nth-of-type(3) {
     opacity: 1;
     top: 20%;
     transform: translateX(0);
@@ -180,7 +218,7 @@ h1 {
     transition-delay: 200ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(4) {
+.thumb-input:checked ~ .figure div:nth-of-type(4) {
     opacity: 1;
     top: 30%;
     transform: translateX(0);
@@ -189,7 +227,7 @@ h1 {
     transition-delay: 300ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(5) {
+.thumb-input:checked ~ .figure div:nth-of-type(5) {
     opacity: 1;
     top: 40%;
     transform: translateX(0);
@@ -198,7 +236,7 @@ h1 {
     transition-delay: 400ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(6) {
+.thumb-input:checked ~ .figure div:nth-of-type(6) {
     opacity: 1;
     top: 50%;
     transform: translateX(0);
@@ -207,7 +245,7 @@ h1 {
     transition-delay: 500ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(7) {
+.thumb-input:checked ~ .figure div:nth-of-type(7) {
     opacity: 1;
     top: 60%;
     transform: translateX(0);
@@ -216,7 +254,7 @@ h1 {
     transition-delay: 600ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(8) {
+.thumb-input:checked ~ .figure div:nth-of-type(8) {
     opacity: 1;
     top: 70%;
     transform: translateX(0);
@@ -225,7 +263,7 @@ h1 {
     transition-delay: 700ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(9) {
+.thumb-input:checked ~ .figure div:nth-of-type(9) {
     opacity: 1;
     top: 80%;
     transform: translateX(0);
@@ -234,7 +272,7 @@ h1 {
     transition-delay: 800ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(10) {
+.thumb-input:checked ~ .figure div:nth-of-type(10) {
     opacity: 1;
     top: 90%;
     transform: translateX(0);
@@ -243,8 +281,9 @@ h1 {
     transition-delay: 900ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-child(11) {
+.thumb-input:checked ~ .figure div:nth-of-type(11) {
     opacity: 1;
+    top:0;
     height: 100%;
     transform: translateX(0);
     background-position: 0;
