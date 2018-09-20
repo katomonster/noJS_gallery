@@ -23,6 +23,7 @@ html {
     height: 100%;
     font-size: 20px;
     color: #fff;
+    display: none;
 }
 .btn-prev:after,
 .btn-next:after {
@@ -49,6 +50,8 @@ html {
 .btn-next {
     right: -30px;
 }
+.figure:target .btn-prev,
+.figure:target .btn-next { display: block }
 
 .figure {
     max-height: 0;
@@ -147,15 +150,12 @@ h1 {
     max-width: 300px;
 }
 
-#close:checked ~ div .overlay {
-    display: none;
-}
-
-.thumb-input:checked ~ .figure {
+.figure:target {
     max-height: none;
     z-index: 100;
 }
-.thumb-input ~ .figure:after {
+
+.figure:target:after {
     content: '';
     position: absolute;
     top: -40px;
@@ -170,16 +170,12 @@ h1 {
     cursor: pointer;
 }
 
-/*.thumb-input:checked ~ .figure:after {
-    content: '\00d7';
-}*/
-
-.thumb-input:checked ~ .overlay {
+.figure:target ~ .overlay {
     display: block;
-    z-index: 100;
+    z-index: 1;
 }
 
-.thumb-input:checked ~ .figure div {
+.figure:target div {
     width: 100%;
     height: 10%;
     position: absolute;
@@ -187,11 +183,13 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
 }
-.thumb-input ~ .figure div {
+
+.figure div {
     opacity: 0;
     transform: translateX(-100%);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(1) {
+/* ======= 'blind effect styling for images' =========*/
+.figure:target div:nth-of-type(1) {
     opacity: 1;
     top: 0;
     background-position: 0 0;
@@ -200,7 +198,7 @@ h1 {
     transition-delay: 0;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(2) {
+.figure:target div:nth-of-type(2) {
     opacity: 1;
     top: 10%;
     transform: translateX(0);
@@ -209,7 +207,7 @@ h1 {
     transition-delay: 100ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(3) {
+.figure:target div:nth-of-type(3) {
     opacity: 1;
     top: 20%;
     transform: translateX(0);
@@ -218,7 +216,7 @@ h1 {
     transition-delay: 200ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(4) {
+.figure:target div:nth-of-type(4) {
     opacity: 1;
     top: 30%;
     transform: translateX(0);
@@ -227,7 +225,7 @@ h1 {
     transition-delay: 300ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(5) {
+.figure:target div:nth-of-type(5) {
     opacity: 1;
     top: 40%;
     transform: translateX(0);
@@ -236,7 +234,7 @@ h1 {
     transition-delay: 400ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(6) {
+.figure:target div:nth-of-type(6) {
     opacity: 1;
     top: 50%;
     transform: translateX(0);
@@ -245,7 +243,7 @@ h1 {
     transition-delay: 500ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(7) {
+.figure:target div:nth-of-type(7) {
     opacity: 1;
     top: 60%;
     transform: translateX(0);
@@ -254,7 +252,7 @@ h1 {
     transition-delay: 600ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(8) {
+.figure:target div:nth-of-type(8) {
     opacity: 1;
     top: 70%;
     transform: translateX(0);
@@ -263,7 +261,7 @@ h1 {
     transition-delay: 700ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(9) {
+.figure:target div:nth-of-type(9) {
     opacity: 1;
     top: 80%;
     transform: translateX(0);
@@ -272,7 +270,7 @@ h1 {
     transition-delay: 800ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(10) {
+.figure:target div:nth-of-type(10) {
     opacity: 1;
     top: 90%;
     transform: translateX(0);
@@ -281,7 +279,7 @@ h1 {
     transition-delay: 900ms;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.thumb-input:checked ~ .figure div:nth-of-type(11) {
+.figure:target div:nth-of-type(11) {
     opacity: 1;
     top:0;
     height: 100%;
@@ -292,7 +290,8 @@ h1 {
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-#thumb-1:checked ~ .figure {
+/* ========= Image container ========= */
+.image-container:nth-of-type(1) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
@@ -301,77 +300,77 @@ h1 {
     max-height: 380px;
 }
 
-#thumb-1:checked ~ .figure div {
+.image-container:nth-of-type(1) .figure:target div {
     background-image: url(images/img-13.jpg);
 }
 
-#thumb-2:checked ~ .figure {
+.image-container:nth-of-type(2) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-2:checked ~ .figure div {
+.image-container:nth-of-type(2) .figure:target div {
     background-image: url(images/img-1.jpg);
 }
 
-#thumb-3:checked ~ .figure {
+.image-container:nth-of-type(3) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-3:checked ~ .figure div {
+.image-container:nth-of-type(3) .figure:target div {
     background-image: url(images/img-2.jpg);
 }
 
-#thumb-4:checked ~ .figure {
+.image-container:nth-of-type(4) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-4:checked ~ .figure div {
+.image-container:nth-of-type(4) .figure:target div {
     background-image: url(images/img-3.jpg);
 }
 
-#thumb-5:checked ~ .figure {
+.image-container:nth-of-type(5) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-5:checked ~ .figure div {
+.image-container:nth-of-type(5) .figure:target div {
     background-image: url(images/img-4.jpg);
 }
 
-#thumb-6:checked ~ .figure {
+.image-container:nth-of-type(6) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-6:checked ~ .figure div {
+.image-container:nth-of-type(6) .figure:target div {
     background-image: url(images/img-5.jpg);
 }
 
-#thumb-7:checked ~ .figure {
+.image-container:nth-of-type(7) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-7:checked ~ .figure div {
+.image-container:nth-of-type(7) .figure:target div {
     background-image: url(images/img-6.jpg);
 }
 
-#thumb-8:checked ~ .figure {
+.image-container:nth-of-type(8) .figure:target {
     width: 53.2vw;
     height: 94.08vw;
     max-width: 380px;
@@ -380,241 +379,241 @@ h1 {
     max-height: 672px;
 }
 
-#thumb-8:checked ~ .figure div {
+.image-container:nth-of-type(8) .figure:target div {
     background-image: url(images/img-7.jpg);
 }
 
-#thumb-9:checked ~ .figure {
+.image-container:nth-of-type(9) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-9:checked ~ .figure div {
+.image-container:nth-of-type(9) .figure:target div {
     background-image: url(images/img-8.jpg);
 }
 
-#thumb-10:checked ~ .figure {
+.image-container:nth-of-type(10) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-10:checked ~ .figure div {
+.image-container:nth-of-type(10) .figure:target div {
     background-image: url(images/img-9.jpg);
 }
 
-#thumb-11:checked ~ .figure {
+.image-container:nth-of-type(11) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-11:checked ~ .figure div {
+.image-container:nth-of-type(11) .figure:target div {
     background-image: url(images/img-10.jpg);
 }
 
-#thumb-12:checked ~ .figure {
+.image-container:nth-of-type(12) .figure:target {
     width: 53.2vw;
     height: 94.08vw;
     max-width: 380px;
     max-height: 672px;
 }
 
-#thumb-12:checked ~ .figure div {
+.image-container:nth-of-type(12) .figure:target div {
     background-image: url(images/img-11.jpg);
 }
 
-#thumb-13:checked ~ .figure {
+.image-container:nth-of-type(13) .figure:target {
     width: 53.2vw;
     height: 94.08vw;
     max-width: 380px;
     max-height: 672px;
 }
 
-#thumb-13:checked ~ .figure div {
+.image-container:nth-of-type(13) .figure:target div {
     background-image: url(images/img-12.jpg);
 }
 
-#thumb-14:checked ~ .figure {
+.image-container:nth-of-type(14) .figure:target {
     width: 53.2vw;
     height: 94.08vw;
     max-width: 380px;
     max-height: 672px;
 }
 
-#thumb-14:checked ~ .figure div {
+.image-container:nth-of-type(14) .figure:target div {
     background-image: url(images/img-14.jpg);
 }
 
-#thumb-15:checked ~ .figure {
-    
+.image-container:nth-of-type(15) .figure:target {
     width: 95vw;
     height: 53.35vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-15:checked ~ .figure div {
+.image-container:nth-of-type(15) .figure:target div {
     background-image: url(images/img-15.jpg);
 }
 
-#thumb-16:checked ~ .figure {
+.image-container:nth-of-type(16) .figure:target {
     width: 94.08vw;
     height: 53.2vw;
     max-width: 672px;
     max-height: 380px;
 }
 
-#thumb-16:checked ~ .figure div {
+.image-container:nth-of-type(16) .figure:target div {
     background-image: url(images/img-16.jpg);
 }
 
-#thumb-17:checked ~ .figure {
+.image-container:nth-of-type(17) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-17:checked ~ .figure div {
+.image-container:nth-of-type(17) .figure:target div {
     background-image: url(images/img-17.jpg);
 }
 
-#thumb-18:checked ~ .figure {
+.image-container:nth-of-type(18) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-18:checked ~ .figure div {
+.image-container:nth-of-type(18) .figure:target div {
     background-image: url(images/img-18.jpg);
 }
 
-#thumb-19:checked ~ .figure {
+.image-container:nth-of-type(19) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-19:checked ~ .figure div {
+.image-container:nth-of-type(19) .figure:target div {
     background-image: url(images/img-19.jpg);
 }
 
-#thumb-20:checked ~ .figure {
+.image-container:nth-of-type(20) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-20:checked ~ .figure div {
+.image-container:nth-of-type(20) .figure:target div {
     background-image: url(images/img-20.jpg);
 }
 
-#thumb-21:checked ~ .figure {
+.image-container:nth-of-type(21) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-21:checked ~ .figure div {
+.image-container:nth-of-type(21) .figure:target div {
     background-image: url(images/img-21.jpg);
 }
 
-#thumb-22:checked ~ .figure {
+.image-container:nth-of-type(22) .figure:target {
     width: 71.25vw;
     height: 95vw;
     max-width: 510px;
     max-height: 680px;
 }
 
-#thumb-22:checked ~ .figure div {
+.image-container:nth-of-type(22) .figure:target div {
     background-image: url(images/img-22.jpg);
 }
 
-#thumb-23:checked ~ .figure {
+.image-container:nth-of-type(23) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-23:checked ~ .figure div {
+.image-container:nth-of-type(23) .figure:target div {
     background-image: url(images/img-23.jpg);
 }
 
-#thumb-24:checked ~ .figure {
+.image-container:nth-of-type(24) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-24:checked ~ .figure div {
+.image-container:nth-of-type(24) .figure:target div {
     background-image: url(images/img-24.jpg);
 }
 
-#thumb-25:checked ~ .figure {
+.image-container:nth-of-type(25) .figure:target {
     width: 71.25vw;
     height: 95vw;
     max-width: 510px;
     max-height: 680px;
 }
 
-#thumb-25:checked ~ .figure div {
+.image-container:nth-of-type(25) .figure:target div {
     background-image: url(images/img-25.jpg);
 }
 
-#thumb-26:checked ~ .figure {
+.image-container:nth-of-type(26) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-26:checked ~ .figure div {
+.image-container:nth-of-type(26) .figure:target div {
     background-image: url(images/img-26.jpg);
 }
 
-#thumb-27:checked ~ .figure {
+.image-container:nth-of-type(27) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-27:checked ~ .figure div {
+.image-container:nth-of-type(27) .figure:target div {
     background-image: url(images/img-27.jpg);
 }
 
-#thumb-28:checked ~ .figure {
+.image-container:nth-of-type(28) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-28:checked ~ .figure div {
+.image-container:nth-of-type(28) .figure:target div {
     background-image: url(images/img-28.jpg);
 }
 
-#thumb-29:checked ~ .figure {
+.image-container:nth-of-type(29) .figure:target {
     width: 95vw;
     height: 71.25vw;
     max-width: 680px;
     max-height: 510px;
 }
 
-#thumb-29:checked ~ .figure div {
+.image-container:nth-of-type(29) .figure:target div {
     background-image: url(images/img-29.jpg);
 }
+
 
 @media (min-width: 460px) {
     .image-container {
