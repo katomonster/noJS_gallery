@@ -124,11 +124,6 @@ h1 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.thumb-input,
-#close {
-    display: none;
-}
-
 .thumb-label {
     margin: 4px;
     width: 100%;
@@ -155,19 +150,20 @@ h1 {
     z-index: 100;
 }
 
-.figure:target:after {
-    content: '';
+.close-btn {
     position: absolute;
-    top: -40px;
-    right: -15px;
+    top: -26px;
+    right: -26px;
     display: block;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     color: #fff;
     font-size: 30px;
-    cursor: pointer;
+    text-decoration: none;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,.5);
 }
 
 .figure:target ~ .overlay {
